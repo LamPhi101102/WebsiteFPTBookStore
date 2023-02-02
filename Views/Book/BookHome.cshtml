@@ -1,0 +1,160 @@
+@model FPTBOOK_STORE.Models.BookCategoryViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<div style = "margin-top:65px">
+
+</div>
+<!-- Start Banner Hero -->
+    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
+            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" style = "background-color: #bbbbbb">
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="~/img/1. Harry-Potter.png" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left align-self-center">
+                                <h1 class="h1"><strong>Harry Potter</strong></h1>
+                                <h3 class="h2">A series of seven fantasy novels written by British author J. K. Rowling</h3>
+                                <p style = "text-align: justify;">
+                                    The novels chronicle the lives of a young wizard, 
+                                    Harry Potter, and his friends Hermione Granger and Ron Weasley, 
+                                    all of whom are students at Hogwarts School of Witchcraft and Wizardry. 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="~/img/2- Anime.jpg" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1"><strong>Manga</strong></h1>
+                                <h3 class="h2">Comics or graphic novels originating from Japan</h3>
+                                <p style = "text-align: justify;">
+                                    Most manga conform to a style developed in Japan in the late 
+                                    19th century, and the form has a long prehistory in earlier Japanese art. 
+                                    The term manga is used in Japan to refer to both comics and cartooning. 
+                                    Outside of Japan, the word is typically used to refer to comics 
+                                    originally published in the country.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="~/img/3. Fantasy.jpg" alt="">
+                        </div>
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1"><strong>C. S. Johnson Book</strong></h1>
+                                <h3 class="h2">C.S. Johnson's most popular series is The Starlight Chronicles.</h3>
+                                <p style = "text-align: justify;">
+                                    The award-winning, genre-hopping author of several books, including the Starlight Chronicles series, 
+                                    the Divine Space Pirates trilogy, and the Once Upon a Princess saga for young adults.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+    <!-- End Banner Hero -->
+
+<form asp-controller="Book" asp-action="BookHome" method="get">
+    <p>
+        <div class="search-box" style = "margin-left:13%">
+            <select asp-for="BookCategory" asp-items="Model.Categories" class ="search-txt" style ="background-color: #2f3640; color : white; margin-bottom: 5px;">
+            <option value="">Select Category</option>
+            </select>
+
+            <input type="text" class ="search-txt" asp-for="Search"  placeholder = "Type to search">
+            <button class = "search-btn" type = "submit" name = "submit"> <i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+</div>
+    </p>
+</form>
+
+<div>
+    <!-- Start Content -->
+    <div class="container py-5" >
+        <div class="row">
+            <div class="col-lg-3">
+                <h1 class="h2 pb-4">Recommend Categories</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">                
+                        <form asp-controller="Book" asp-action="BookHome" method="get">
+                        <p>
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Comedy&Search=" style = "text-decoration:none;">Comedy</a>
+                        </p>
+                    </form>
+                    </li>
+                    <li class="pb-3">                
+                        <form asp-controller="Book" asp-action="BookHome" method="get">
+                        <p>
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Fantasy&Search=" style = "text-decoration:none;">Fantasy</a>
+                        </p>
+                    </form>
+                    </li>
+                    <li class="pb-3">                
+                        <form asp-controller="Book" asp-action="BookHome" method="get">
+                        <p>
+                            <input asp-for="BookCategory" asp-items="Model.Categories" type = "hidden">
+                            <a href="/?BookCategory=Manga&Search=" style = "text-decoration:none;">Manga</a>
+                        </p>
+                    </form>
+                    </li>               
+                </ul>
+            </div>
+            <div class="col-lg-9">
+                <div class="row" style = "margin-top:50px">
+                    @foreach (var item in Model.Books)
+                    {
+                    <div class="col-md-4">
+                        <div class="card mb-4 product-wap rounded-0">
+                            <div class="card rounded-0">
+                                <img class="card-img rounded-0 img-fluid" style = "width: 100%; height: 250px;" src="~/uploads/@Html.DisplayFor(modelItem => item.UploadImage)">
+                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                    <ul class="list-unstyled">
+                                        <li><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-light"><i class="far fa-eye"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p class="text-center mb-0" style="margin-top: 10px">@Html.DisplayFor(modelItem => item.Name)</p>
+                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                </ul>
+                                <p class="text-center mb-0" style="margin-top: 10px"> <strong>$@(item.Price * 1.1)</strong></p>
+                            </div>
+                        </div>  
+                    </div>
+                    }
+            </div>   
+        </div>
+    </div>
+    </div>
